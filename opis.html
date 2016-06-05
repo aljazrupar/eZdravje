@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>eZdravje :: 4. DN :: OIS 2015/2016</title>
+  <link href="knjiznice/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {padding-top: 70px;}
+  </style>
+  <script src="knjiznice/js/jquery-2.2.3.min.js"></script>
+  <script src="knjiznice/js/bootstrap.min.js"></script>
+  <script src="knjiznice/js/koda.js"></script>
+</head>
+<body>
+
+  <!-- ZAČETEK: Menujska vrstica na vrhu spletne strani -->
+  <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#menujska-vrstica">
+          <span class="sr-only">Prikaži menu</span>
+          <span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+        </button>
+        <!-- ZAČETEK: Ime vaše aplikacije -->
+        <a class="navbar-brand" href="index.html">Interaktivni dnevnik meritev krvnega tlaka</a>
+        <!-- KONEC: Ime vaše aplikacije -->
+      </div>
+      <div class="collapse navbar-collapse" id="menujska-vrstica">
+        <ul class="nav navbar-nav">
+          <li><a href="opis.html">Opis ideje</a></li>
+          <li><a href="nacrt.html">Načrt informacijske rešitve</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- KONEC: Menujska vrstica na vrhu spletne strani -->
+
+  <!-- ZAČETEK: Opis delovanja aplikacije -->
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 text-center">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Opis ideje, ki jo aplikacija podpira</h3>
+          </div>
+          <div class="panel-body">
+            <!-- ZAČETEK: Opis ideje, ki jo aplikacija podpira -->
+            <p><span>Aplikacija temelji na beleženju meritev krvenga tlaka. Namesto, da bi vzeli v roke pisalo in papir, zapisujemo meritve na to spletno stran. Aplikacija obvešča uporabnika o krvnem tlaku in njegovem spreminjanju čez leta. Grafično prikaže spreminjanje  glede na sistolični in diastolični tlak. Pri tem lahko izpiše tudi zgodovino meritev in njihovo povprečje in vam predlaga ukrepati. Če pa ste željni več informacij, pa vam prikaže tudi opis in posnetek glede na vaše stanje. Posebnost aplikacije je v tem da se popolnoma prilagaja vsakemu uporabniku posebej. Glede na podatke iz vašega EHRid se izpiše diagnoza, graf, in pa svetovanje. Vključil pa sem še statistične podatke tlaka in jih posredoval v 4 različne grafe.</span></p>
+            <!-- KONEC: Opis ideje, ki jo aplikacija podpira -->
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Uporabljeni zunanji viri podatkov</h3>
+          </div>
+          <div class="panel-body">
+            <!-- ZAČETEK: Uporabljeni zunanji viri podatkov -->
+            <p>Za zunanji vir sem uporabil wikipedijp, ker se mi zdi najbolj relavanten vir informacij. Glede na povprečje sistoličnega krvnega tlaka posreduje informacije iz wikipedije. Za prenos sem uporabil getJson funkcijo, nato pa sem besedilo obdelal tako da je primerno branju.</p>
+            <!-- KONEC: Uporabljeni zunanji viri podatkov -->
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Master/detail načrtovalski vzorec</h3>
+          </div>
+          <div class="panel-body">
+            <!-- ZAČETEK: Master/detail načrtovalski vzorec -->
+            <p>Moj master vzorec so vsi shranjeni podatki, ki jih generiramo glede na pacienta. Nato, pa imamo možnost izbrati katere izpise želimo, da se nam prikažejo. Na izbiro imate diastolicni in sistolini tlak. Za vsakega pa lahko izberete na podlagi kolikšnih zadnjih meritev želite, da se vam prikaže vpis in pa izračuna samo povprečje. Glede na to pa vam še postavi diagnozo.</p>
+            <!-- KONEC: Master/detail načrtovalski vzorec -->
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Uporabljena tehnika za vizualizacijo podatkov</h3>
+          </div>
+          <div class="panel-body">
+            <!-- ZAČETEK: Uporabljeni zunanji viri podatkov -->
+            <p>Za vizualizacijo z grafom sem uporabil tehniko črt, ki prikazuje spreminjanje tlaka. Za vsako leto izračuna povprečje in prikaže sistolični in diastolični tlak. Uporabil pa sem : <a href="http://www.highcharts.com/demo/line-basic" target="_blank">highcharts</a>. Tak prikaz sem izbral, ker je najbolj pregleden in praktičen za prikaz v daljšem časovnem obdobju. Podatke sem obdelal glede na ehrId pacienta, naredil povprečno mesečno meritev in jih prikazal.</p>
+            <!-- KONEC: Uporabljeni zunanji viri podatkov -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- KONEC: Opis delovanja aplikacije -->
+
+</body>
+</html>

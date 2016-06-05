@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html> 
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		<title>EhrScape - Vnos in poizvedovanje po EHR podatkih</title>
+		<script src="knjiznice/js/jquery-2.2.3.min.js"></script>
+		<link href="knjiznice/css/bootstrap.min.css" rel="stylesheet">
+		<script src="knjiznice/js/bootstrap.min.js"></script>
+		<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+		<script src="https://code.highcharts.com/highcharts.js"></script>
+		<script src="https://code.highcharts.com/modules/exporting.js"></script>
+		
+		<script src="https://d3js.org/d3.v3.min.js" language="JavaScript"></script>
+		
+		<script src="koda.js"></script>
+		
+		
+		<style>
+			body {padding: 10px;}
+			.btn {margin-top: 10px;}
+			.obvestilo {margin-left:10px;}
+			.majhna-ikona {font-size:60%; margin-left:10px}
+			
+		</style>
+		
+		
+		
+		
+		
+		<style>
+			
+			.bar {
+			  fill: steelblue;
+			}
+			
+			.bar:hover {
+			  fill: brown;
+			}
+			
+			.axis {
+			  font: 10px sans-serif;
+			}
+			
+			.axis path,
+			.axis line {
+			  fill: none;
+			  stroke: #000;
+			  shape-rendering: crispEdges;
+			}
+			
+			.x.axis path {
+			  display: none;
+			}
+
+
+		</style>
+		
+		<style>
+			.jumbotron { 
+			    background-color: #f4511e; /* Orange */
+			    color: #ffffff;
+			}
+			</style>
+	</head>
+	
+	<body>
+		<div class="jumbotron text-center"><h2>Najboljsi nasveti za vaš krvni tlak<span class="majhna-ikona glyphicon glyphicon-question-sign"></span></a></h2></div>
+		
+		
+		
+		
+				
+				
+				
+		<div id="myCarousel" class="carousel slide text-center" data-ride="carousel">
+			<h2>Zdravje je na prvem mest!</h2>
+		  <!-- Indicators -->
+		  <ol class="carousel-indicators">
+		    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+		    <li data-target="#myCarousel" data-slide-to="1"></li>
+		    <li data-target="#myCarousel" data-slide-to="2"></li>
+		  </ol>
+		
+		  <!-- Wrapper for slides -->
+		  <div class="carousel-inner" role="listbox">
+		    <div class="item active">
+		    <h3>"If you don't know your blood pressure, it's like not knowing the value of your company.!<br><span style="font-style:normal;">Mehmet Oz</span></h3>
+		    </div>
+		    <div class="item">
+		      <h3>"To keep the body in good health is a duty... otherwise we shall not be able to keep our mind strong and clear. "<br><span style="font-style:normal;"> Buddha </span></h3>
+		    </div>
+		    <div class="item">
+		      <h3>"The first wealth is health."<br><span style="font-style:normal;">Ralph Waldo Emerson</span></h3>
+		    </div>
+		  </div>
+		
+		  <!-- Left and right controls -->
+		  <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+		    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+		    <span class="sr-only">Previous</span>
+		  </a>
+		  <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+		    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+		    <span class="sr-only">Next</span>
+		  </a>
+		</div>
+				
+				
+				
+		<div class="row">
+			<div class="col-lg-6 col-md-6 col-sm-6">
+				<div class="panel panel-default" style="background-color:#2196F3;color:#fff;">
+					<div class="panel-heading" >
+						<div class="row">
+							<div class="col-lg-8 col-md-8 col-sm-8"><b>Kreiraj EHR zapis</b> za novega bolnika</div>
+							<div class="col-lg-4 col-md-4 col-sm-4"><select class="form-control input-sm" id="preberiPredlogoBolnika"><option value=""></option><option value="1">1. Blaz Oblak</option><option value="2">2. Andrej Hafner</option></option><option value="3">3. Erik Gartner</option></select></div>
+							
+						</div>
+					</div>
+					
+					<div class="panel-body">
+							<span class="label label-default">Stevilka pacienta</span><input id="pacientEHR" type="text" class="form-control input-mini" placeholder="0">
+							<button type="button" class="btn btn-primary btn-xs" onclick="generirajPodatke()">Generiraj podatke o bolniku</button><span id="kreirajSporocilo"></span>
+						
+				  	</div>
+				</div>
+			</div>
+			<div class="col-lg-6 col-md-6 col-sm-6">
+				<div class="panel panel-default" style="background-color:#2196F3;color:#fff;">
+					<div class="panel-heading">
+						<div class="row">
+							<div class="col-lg-8 col-md-8 col-sm-8"><b>Preberi EHR zapis</b> obstoječega bolnika</div>
+						</div>
+					</div>
+					<div class="panel-body">
+						<span class="label label-default">EHR ID</span><input id="preberiEHRid" type="text" class="form-control input-mini" placeholder="7b661e12-3a98-21ad-c29e-2dc9f5a3d885">
+						<button type="button" class="btn btn-primary btn-xs" onclick="preberiEHRodBolnika()">Preberi osnovne podatke o bolniku</button><span id="preberiSporocilo"></span>
+				  	</div>
+				</div>
+			</div>
+		</div>
+		
+		
+			
+			<!--dokoncaj se value od Blaz in Andrej... unesi njune podatke -->
+		
+			<div class="col-lg-6 col-md-6 col-sm-6">
+				<div class="panel panel-default" style="background-color:#2196F3;color:#fff;">
+					<div class="panel-heading">
+						<div class="row">
+							
+								<div class="col-lg-6 col-md-6 col-sm-6"><b>Pregled stanja sistoličnega in diastoličnega tlaka</b></div>
+								<div class="col-lg-3 col-md-3 col-sm-3"><select class="form-control input-sm" id="preberiTlak"><option value="sistolicni krvni tlak">sistolicni krvni tlak</option><option value="diastolicni krvni tlak">diastolicni krvni tlak</option></select></div>
+								<div class="col-lg-3 col-md-3 col-sm-3"><select class="form-control input-sm" id="preberiSteviloIzpisov"><option value="10">Želim 10 zadnjih vpisov meritev</option><option value="20">Želim 20 zadnjih vpisov meritev</option><option value="30">Želim 30 zadnjih vpisov meritev</option><option value="40">Želim 40 zadnjih vpisov meritev</option></select></div>
+						</div>
+					</div>
+					
+					
+					<div class="panel-body">
+						<span class="label label-default">EHR ID</span><input id="meritveTlakaEHRid" type="text" class="form-control input-mini" placeholder="7b661e12-3a98-21ad-c29e-2dc9f5a3d885">
+						
+						<button type="button" class="btn btn-primary btn-xs" onclick="preberiMeritveTlaka()">Preberi meritve tlaka</button><span id="preberiMeritveTlakaSporocilo"></span>
+						<button type="button" class="btn btn-primary btn-xs" onclick="vrniGraf()">Oglej si graf tlaka</button><span id="preberiMeritveTlakaSporociloGRAF"></span>
+						
+						<div id="rezultatGraf"></div>
+						
+						<div id="rezultatMeritveTlaka" ></div>
+						<div id="rezultatMeritveTlakaGraf"></div>
+						
+				  	</div>
+				</div>
+			</div>
+			
+			
+			<div class="col-lg-6 col-md-6 col-sm-6">
+				<div class="panel panel-default" style="background-color:#2196F3;color:#fff;">
+					<div class="panel-body">
+						<div class="col-lg-3 col-md-3 col-sm-3"><select class="form-control input-sm" id="izpisiGrafStatistikaEHRid"><option value="1">Glede na starost</option><option value="2">Glede na etnicno pripadnost</option></select></div>
+						<div class="col-lg-3 col-md-3 col-sm-3"><select class="form-control input-sm" id="izpisiGrafStatistikaEHRidSpol"><option value="1">moski</option><option value="2">zenske</option></select></div>
+						
+						<button type="button" class="btn btn-primary btn-xs" onclick="izpisiGrafStatistika()">Statistika krvnega tlaka</button><span id="preberiStatistikaSporocilo"></span>
+						<div id="rezultatStatistika" ></div>
+						
+				  	</div>
+			</div>
+			</div>
+			
+			<div class="panel-body">
+			<div class="col-lg-6 col-md-6 col-sm-6">
+				<div class="panel panel-default" style="background-color:#2196F3;color:#fff;">
+					<div class="panel-body">
+						<span class="label label-default">EHR ID</span><input id="wikipediaEHRID" type="text" class="form-control input-mini" placeholder="7b661e12-3a98-21ad-c29e-2dc9f5a3d885">
+						
+						<button type="button" class="btn btn-primary btn-xs" onclick="vrniWiki()">Wikipedia</button><span id="preberiWikiSporocilo"></span>
+						<div class="panel panel-default" style="background-color:#002b80;color:#ffffff;" id="rezultatWiki" ></div>
+						<div id="rezultatWikipedijaRes" ></div>
+				  	</div>
+			
+				</div>
+			</div>
+			</div>
+	</body>
+</html>
