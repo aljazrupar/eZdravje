@@ -22,7 +22,7 @@
           <span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
         </button>
         <!-- ZAČETEK: Ime vaše aplikacije -->
-        <a class="navbar-brand" href="index.html">Interaktivni dnevnik meritev krvnega tlaka</a>
+        <a class="navbar-brand" href="index.html">Dnevnik tlaka</a>
         <!-- KONEC: Ime vaše aplikacije -->
       </div>
       <div class="collapse navbar-collapse" id="menujska-vrstica">
@@ -45,7 +45,7 @@
           </div>
           <div class="panel-body">
             <!-- ZAČETEK: Opis ideje, ki jo aplikacija podpira -->
-            <p><span>Aplikacija temelji na beleženju meritev krvenga tlaka. Namesto, da bi vzeli v roke pisalo in papir, zapisujemo meritve na to spletno stran. Aplikacija obvešča uporabnika o krvnem tlaku in njegovem spreminjanju čez leta. Grafično prikaže spreminjanje  glede na sistolični in diastolični tlak. Pri tem lahko izpiše tudi zgodovino meritev in njihovo povprečje in vam predlaga ukrepati. Če pa ste željni več informacij, pa vam prikaže tudi opis in posnetek glede na vaše stanje. Posebnost aplikacije je v tem da se popolnoma prilagaja vsakemu uporabniku posebej. Glede na podatke iz vašega EHRid se izpiše diagnoza, graf, in pa svetovanje. Vključil pa sem še statistične podatke tlaka in jih posredoval v 4 različne grafe.</span></p>
+            <p><span>Aplikacija temelji na beleženju meritev krvenga tlaka. Namesto, da bi vzeli v roke pisalo in papir, zapisujemo meritve na to spletno stran. Aplikacija obvešča uporabnika o krvnem tlaku in njegovem spreminjanju čez leta. Grafično prikaže spreminjanje  glede na sistolični in diastolični tlak. Pri tem lahko izpiše tudi zgodovino meritev in njihovo povprečje in vam predlaga ukrepati. Če pa ste željni več informacij, pa vam prikaže tudi opis in posnetek glede na vaše stanje. Posebnost aplikacije je v tem da se popolnoma prilagaja vsakemu uporabniku posebej. Glede na podatke iz vašega EHRid se izpiše diagnoza, graf, in pa svetovanje. Pri vsaki implementaciji se aplikacija prilagaja trem vrstam različnih meritev. Vključil pa sem še statistične podatke tlaka in jih posredoval v 1 graf s 4 različnimi statistikami.</span></p>
             <!-- KONEC: Opis ideje, ki jo aplikacija podpira -->
           </div>
         </div>
@@ -55,7 +55,7 @@
           </div>
           <div class="panel-body">
             <!-- ZAČETEK: Uporabljeni zunanji viri podatkov -->
-            <p>Za zunanji vir sem uporabil wikipedijp, ker se mi zdi najbolj relavanten vir informacij. Glede na povprečje sistoličnega krvnega tlaka posreduje informacije iz wikipedije. Za prenos sem uporabil getJson funkcijo, nato pa sem besedilo obdelal tako da je primerno branju.</p>
+            <p>Za zunanji vir sem uporabil wikipedijo, ker se mi zdi najbolj relavanten vir informacij. Iz zgeneriranih podatkov izračuna povprečje zadnjih 10 meritev krvnega tlaka in vam prikaže dodatne informacije iz wikipedije glede na vaše povprečje. Za prenos sem uporabil getJson funkcijo, nato pa sem besedilo obdelal tako da je primerno branju. Dodal pa sem še youtube video, ki se pa vsebinsko ponovno priagaja uporabniku</p>
             <!-- KONEC: Uporabljeni zunanji viri podatkov -->
           </div>
         </div>
@@ -75,7 +75,7 @@
           </div>
           <div class="panel-body">
             <!-- ZAČETEK: Uporabljeni zunanji viri podatkov -->
-            <p>Za vizualizacijo z grafom sem uporabil tehniko črt, ki prikazuje spreminjanje tlaka. Za vsako leto izračuna povprečje in prikaže sistolični in diastolični tlak. Uporabil pa sem : <a href="http://www.highcharts.com/demo/line-basic" target="_blank">highcharts</a>. Tak prikaz sem izbral, ker je najbolj pregleden in praktičen za prikaz v daljšem časovnem obdobju. Podatke sem obdelal glede na ehrId pacienta, naredil povprečno mesečno meritev in jih prikazal.</p>
+            <p>Za vizualizacijo z grafom sem uporabil tehniko črt, ki prikazuje spreminjanje tlaka. Za vsako leto izračuna povprečje in prikaže sistolični in diastolični tlak. Uporabil pa sem : <a href="http://www.highcharts.com/demo/line-basic" target="_blank">highcharts</a>. Tak prikaz sem izbral, ker je najbolj pregleden in praktičen za prikaz v daljšem časovnem obdobju. Podatke sem obdelal glede na ehrId pacienta, naredil povprečno mesečno meritev in jih prikazal. Dodal pa sem še eno dodatno vrsto grafa, ki prikaže 4 različne vrste statističnih podatkov</p>
             <!-- KONEC: Uporabljeni zunanji viri podatkov -->
           </div>
         </div>

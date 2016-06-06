@@ -1328,51 +1328,36 @@ function vrniWiki(){
 													    for (text in data.parse.text) {
 												        var text = data.parse.text[text].split("<p>");
 												        var pText = "";
-												
-												        for (p in text) {
-												            //Remove html comment
-												            text[p] = text[p].split("<!--");
-												            if (text[p].length > 1) {
-												                text[p][0] = text[p][0].split(/\r\n|\r|\n/);
-												                text[p][0] = text[p][0][0];
-												                text[p][0] += "</p> ";
-												            }
-												            text[p] = text[p][0];
-												
-												            //Construct a string from paragraphs
-												            if (text[p].indexOf("</p>") == text[p].length - 5) {
-												                var htmlStrip = text[p].replace(/<(?:.|\n)*?>/gm, '') //Remove HTML
-												                var splitNewline = htmlStrip.split(/\r\n|\r|\n/); //Split on newlines
-												                for (newline in splitNewline) {
-												                    if (splitNewline[newline].substring(0, 11) != "Cite error:") {
-												                        pText += splitNewline[newline];
-												                        pText += "\n";
-												                    }
-												                }
-												            }
-												        }
-
-
+																for (p in text) {
+													            //Remove html comment
+													            text[p] = text[p].split("<!--");
+													            if (text[p].length > 1) {
+													                text[p][0] = text[p][0].split(/\r\n|\r|\n/);
+													                text[p][0] = text[p][0][0];
+													                text[p][0] += "</p> ";
+													            }
+													            text[p] = text[p][0];
+													
+													            //Construct a string from paragraphs
+													            if (text[p].indexOf("</p>") == text[p].length - 5) {
+													                var htmlStrip = text[p].replace(/<(?:.|\n)*?>/gm, '') //Remove HTML
+													                var splitNewline = htmlStrip.split(/\r\n|\r|\n/); //Split on newlines
+													                for (newline in splitNewline) {
+													                    if (splitNewline[newline].substring(0, 11) != "Cite error:") {
+													                        pText += splitNewline[newline];
+													                        pText += "\n";
+													                    }
+													                }
+													            }
+													        }
 													        pText = pText.substring(0, pText.length - 2); //Remove extra newline
-													        pText = pText.replace(/[d+]/g, ""); //Remove reference tags (e.x. [1], [4], etc)
-													        
-													        
-													        pText = "<p><span>" + pText + "</p></span>"
-													        if(povprecniTlakSistolicni < 80){
-												        		pText += "<p> <iframe width='420' height='345' src='https://www.youtube.com/embed/qWti317qb_w' allowfullscreen></iframe></p>"
-												        	}
-												        	else if(povprecniTlakSistolicni > 80 && povprecniTlakSistolicni < 130){
-												        		
-												        	}
-												        	else if(povprecniTlakSistolicni > 130){
-												        		pText += "<p> <iframe width='420' height='345' src='https://www.youtube.com/embed/jDYm0i5zT68' allowfullscreen></iframe></p>"
-												        		
-												        	}
-												        	
-													        $("#rezultatWikipedijaRes").append(pText);
-													      
+													        pText = pText.replace(/\[\d+\]/g, ""); //Remove reference tags (e.x. [1], [4], etc)
+													       console.log(pText)
+
+													    	pText = "<p><span>" + pText + "</p></span>"
+					    									 $("#rezultatWikipedijaRes").append(pText);
 													    }
-					    	
+													    
 					    	
 													});
           			    
